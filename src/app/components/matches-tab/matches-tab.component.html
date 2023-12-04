@@ -1,0 +1,39 @@
+<div style="align-items: center;" >
+  <div class="text-center">
+  <form>
+    <div class="text-center"> 
+      <label>Filter : </label>
+      <input type="text" [(ngModel)]='term'  [ngModelOptions]="{standalone: true}" > <!-- name="term"  -->
+    </div>
+    <div><button type="button" class="btn btn-danger" (click)="goToAddMatch(match);">Add</button></div>
+  </form>
+</div>
+<table class="table table-dark" >
+   <thead>
+     <tr>
+       <th *ngFor="let colTitle of colNLS" scope="col" >{{colTitle}}
+          <!-- <app-head-tab [title]="colTitle"></app-head-tab> -->
+         </th>
+         <th>Actions</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let match of matches | filterPipe:term" >
+      <!-- <app-match-row [match]="match"></app-match-row> -->
+          <td> {{match.id}}</td>
+         <td> {{match.scoreOne}}</td>
+         <td> {{match.scoreTwo}}</td>
+         <td> {{match.teamOne}}</td>
+         <td> {{match.teamTwo}}</td>
+         <td>
+            <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example"> -->
+            <button type="button" class="btn btn-success" (click)="goToDisplayMatch(match.id)">DISPLAY</button>
+            <button type="button" class="btn btn-warning" (click)="goToEditMatch(match.id)">EDIT</button>
+            <button type="button" class="btn btn-danger" (click)="delete(match);">DELETE</button>
+            <!-- </div> -->
+         </td>
+     </tr>
+   </tbody>
+ </table>
+ {{term}}
+</div>

@@ -1,0 +1,29 @@
+<app-banner [title]="title"></app-banner>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <form  #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" #email="ngModel" 
+                        [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid }" required email>
+                        <div *ngIf="loginForm.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password" 
+                        [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid }" required >
+                        <div *ngIf="loginForm.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5"  value="Send Message" >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

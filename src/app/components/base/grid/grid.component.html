@@ -1,0 +1,21 @@
+<div style="align-items: center;">
+    <table class="table table-dark">
+       <thead>
+         <tr>
+           <th *ngFor="let colTitle of colNLS" scope="col" >{{colTitle.nls}}</th>
+           <th>Actions</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let obj of myObjects" >
+             <td *ngFor="let att of colNLS"> {{obj[att.id]}}</td>
+             <td>
+                <button type="button" class="btn btn-success" (click)="display(obj);">DISPLAY</button>
+                <button type="button" class="btn btn-warning">EDIT</button>
+                <button type="button" class="btn btn-danger" (click)="delete(obj);">DELETE</button>
+             </td>
+         </tr>
+       </tbody>
+     </table>
+</div>
+
